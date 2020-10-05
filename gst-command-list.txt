@@ -1,0 +1,48 @@
+gst-launch-1.0 v4l2src device=/dev/video0 ! 'video/x-raw,width=640,height=480,framerate=30/1' ! videoconvert ! fbdevsink
+
+gst-launch-1.0 videotestsrc ! video/x-raw,width=640,height=360 ! videoconvert ! videobox left=-640 right=0 top=-360 bottom=0 ! video/x-raw,width=1280,height=720 ! autovideosink
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! 'video/x-raw,width=640,height=480,framerate=30/1' ! videoconvert ! 'video/x-raw,width=640,height=480’ ! ximagesink
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! 'video/x-raw,width=640,height=480,framerate=30/1' ! videoconvert ! 'video/x-raw,width=640,height=480’ ! ximagesink > ok
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! 'video/x-raw,width=640,height=480,framerate=30/1' ! videoconvert ! 'video/x-raw,width=640,height=480’ ! autovideosink > ok
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! 'video/x-raw,width=640,height=480,framerate=30/1' ! videoconvert ! 'videobox left=-640 right=0 top=-360 bottom=0' ! 'video/x-raw,width=640,height=480’ ! autovideosink > ok
+
+gst-launch-1.0 videotestsrc ! video/x-raw,width=640,height=360 ! videoconvert ! videobox left=-640 right=0 top=-360 bottom=0 ! video/x-raw,width=1280,height=720 ! autovideosink
+
+
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! videobox autocrop=true ! video/x-raw, width=640, height=480 ! videoconvert ! ximagesink > ok
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! videobox left=-640 right=0 top=-480 bottom=0 ! video/x-raw, width=640, height=480 ! videoconvert ! ximagesink > ng
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! videobox left=-640 right=0 top=-480 bottom=0 ! video/x-raw, width=640, height=480 ! videoconvert ! ximagesink > ng
+
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! image/jpeg, width=640, height=480,framerate=30/1 ! jpegparse ! jpegdec ! ximagesink stream
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! image/jpeg, width=640, height=480,framerate=30/1 ! jpegparse ! jpegdec ! videoconvert ! ximagesink
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! image/jpeg, width=1920, height=1080,framerate=30/1 ! jpegparse ! jpegdec ! videoconvert ! ximagesink
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! image/jpeg, width=640, height=480,framerate=30/1 ! jpegparse ! jpegdec ! videoconvert ! fbdevsink
+
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! image/jpeg, width=640, height=480,framerate=30/1 ! jpegparse ! jpegdec ! videoconvert ! qt5videosink
+
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! image/jpeg, width=1280, height=720,framerate=30/1 ! jpegparse ! jpegdec ! videoconvert ! ximagesink 
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! image/jpeg, width=1280, height=720,framerate=30/1 ! avdec_mjpeg ! videoconvert ! ximagesink 
+
+
+
+
+
+
+
+
+
+
