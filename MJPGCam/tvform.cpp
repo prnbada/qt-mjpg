@@ -21,7 +21,7 @@ TvForm::TvForm(QWidget *parent) :
     GstElement *src = gst_element_factory_make("v4l2src", "src");
     GstElement *capsfilter = gst_element_factory_make("capsfilter", "capsfilter");
 
-    //GstElement *parse = gst_element_factory_make("jpegparse", "parse");
+    //GstElement *parse = gst_element_factory_make("jpegparse", "parse"); --> can't find "jpegparse"
     GstElement *dec = gst_element_factory_make("avdec_mjpeg", "dec");
 
     GstElement *convert = gst_element_factory_make("videoconvert", "convert");
